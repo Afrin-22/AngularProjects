@@ -16,6 +16,8 @@ export class ServersComponent implements OnInit {
   allowNewServer: boolean = false;
   serverCreationStatus: string = "No server was created.";
   serverName = 'TestServer';
+  serverCreated: boolean = false;
+  servers: string[] = ['TestServer 1','TestServer 2'];
 
   constructor() {
     setTimeout(() => {
@@ -28,6 +30,8 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer() {
+    this.serverCreated=true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = "Server was created! Name is " + this.serverName;
   }
 
@@ -36,4 +40,5 @@ export class ServersComponent implements OnInit {
     //doesn't work without explicit casting. let angular know it is a html input element.
     this.serverName = (<HTMLInputElement>event.target).value;
   } 
+
 }
